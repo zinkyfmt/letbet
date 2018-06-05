@@ -18,6 +18,8 @@ class History extends Component {
 								<th scope="col" className="time">Start Time</th>
 								<th scope="col" align="center" colSpan="3">Match</th>
 								<th scope="col" className="col-md-2">Group</th>
+								<th scope="col" className="col-md-2">Over/Under Handicap</th>
+								<th scope="col" className="col-md-2">Bet</th>
 							</tr>
 						</thead>
 						<tbody>{listDate}</tbody>

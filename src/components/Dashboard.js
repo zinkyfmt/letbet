@@ -12,7 +12,7 @@ class Dashboard extends Component {
 		return (
 			<div className="wrapper">
 				<div className="content">
-					<div className="col-md-6">
+					<div className="col-md-9">
 						<History history={this.props.matches}/>
 					</div>
 				</div>

@@ -19,7 +19,8 @@ const MATCH_ARRAY = [
 		},
 		'date': '20/10/2018',
 		'time': '14:00:00',
-		'group': 'A'
+		'group': 'A',
+		'handicap': 2.5
 	},
 	{
 		'uid': 2,
@@ -35,7 +36,8 @@ const MATCH_ARRAY = [
 		},
 		'date': '21/10/2018',
 		'time': '13:00:00',
-		'group': 'A'
+		'group': 'A',
+		'handicap': 3
 	},
 ];
 class App extends Component {

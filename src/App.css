@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+    background: #ccbaba45;
 }
 
 .App-logo {
@@ -28,12 +29,14 @@
 }
 header {
   margin: 0 auto;
-  background: #ccc;
-  padding: 15px;
+  background: #ccbaba45;
+    width: 1024px;
+  /*padding: 15px;*/
 }
 .wrapper {
   width: 1024px;
-  /*background: #cec;*/
+  background: #282c34;
+    color: #ffffff;
   height: auto;
   margin: 0 auto;
   padding: 10px;
@@ -42,8 +45,6 @@ header {
     text-decoration: none;
     text-underline: none;
     text-align: left;
-    margin-top: 16px;
-    margin-bottom: 16px;
     border: 1px solid #ddd;
     border-radius: 3px;
 }
@@ -53,7 +54,7 @@ header {
 }
 .header-box {
     padding: 5px 10px;
-    background-color: #a9e6db69;
+    background-color: #282c34;
     border-bottom: 1px solid #e1e4e8;
     border-top-left-radius: 2px;
     border-top-right-radius: 2px;
@@ -67,10 +68,13 @@ header {
 img.avatar-team {
     width: 50px;
     height: 50px;
+    float: left;
 }
 .table td, .table th {
     vertical-align: middle !important;
     text-align: center;
+    font-size: 14px;
+    padding: 10px !important;
 }
 .table > .time{
     width: 15%;
@@ -80,4 +84,15 @@ img.avatar-team {
 }
 .table > .away-team {
     text-align: left;
+}
+header img {
+    float: left;
+    padding: 10px;
+}
+header .user-block {
+    padding: 10px 20px;
+    float: right;
+}
+.clear-box {
+    clear: both;
 }
