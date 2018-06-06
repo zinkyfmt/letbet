@@ -46,18 +46,27 @@ class App extends Component {
 		super(props);
 
 		this.state = {
-			matches: []
-		}
+			matches: [],
+			user: {
+				email: null,
+				uid: null,
+				name: null
+			}
+		};
+
 	}
 
 	componentDidMount() {
+		let user = localStorage.getItem('user');
+		let userObject = user ? JSON.parse(user) : {};
+		this.setState({user : userObject});
 		this.setState({matches:MATCH_ARRAY})
 	}
 
 	render() {
 		return (
 		  <div className="App">
-			<Header />
+			<Header user={this.state.user}/>
 		  	{/*<SideBar />*/}
 			<Dashboard matches={this.state.matches}/>
 		  </div>
