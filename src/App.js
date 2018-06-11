@@ -6,7 +6,16 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 // import Dashboard from "./components/Dashboard";
 import MatchDetail from "./components/match/MatchDetail";
 import Match from "./components/match/Match";
+import fire from 'firebase';
 
+const config = {
+    apiKey: "AIzaSyBecLFfB_Dlvl1l66SQmR3fhXUnLeeUTno",
+    authDomain: "letbet-29f41.firebaseapp.com",
+    databaseURL: "https://letbet-29f41.firebaseio.com",
+    projectId: "letbet-29f41",
+    storageBucket: "letbet-29f41.appspot.com",
+    messagingSenderId: "795341636207"
+};
 
 class App extends Component {
 
@@ -19,17 +28,35 @@ class App extends Component {
 				email: null,
 				uid: null,
 				name: null
-			}
+			},
+			match_detail: null,
 		};
-	}
+        fire.initializeApp(config);
+
+    }
 
 	componentDidMount() {
-		let user = localStorage.getItem('user');
+        let firestore = fire.firestore();
+        const settings = {timestampsInSnapshots: true};
+        firestore.settings(settings);
+        let user = localStorage.getItem('user');
 		let userObject = user ? JSON.parse(user) : {};
 		this.setState({user : userObject});
+        var citiesRef = firestore.collection('matches').orderBy('datetime');
+        var allCities = citiesRef.get()
+            .then(snapshot => {
+                snapshot.forEach(doc => {
+                    console.log(doc.id, '=>', doc.data());
+                });
+            })
+            .catch(err => {
+                console.log('Error getting documents', err);
+            });
 		// this.setState({matches:MATCH_ARRAY})
 	}
-
+    getMatchDetailByUid = (match_detail) => {
+        this.setState({match_detail});
+    };
 	logIn() {
 		console.log('sign in');
 		// let user = {
@@ -45,6 +72,9 @@ class App extends Component {
 		// this.setState({name:null});
 		// localStorage.removeItem('user');
 	}
+    closePopup() {
+        this.setState({match_detail:null});
+	};
 	render() {
 		return (
 		  <div className="App">
@@ -62,8 +92,8 @@ class App extends Component {
 				  </TabList>
 				  <TabPanel>
 					  <div className="row">
-						  <div className="tab-content col-md-9"><Match /></div>
-						  <div className="match-detail col-md-3"><MatchDetail /></div>
+						  <div className="tab-content col-md-9"><Match getMatchDetailByUid={this.getMatchDetailByUid.bind(this)}/></div>
+						  {this.state.match_detail ? <div className="match-detail col-md-3"><MatchDetail closePopup={this.closePopup.bind(this)} groupSize={0} match_detail={this.state.match_detail}/></div> : ""}
 					  </div>
 				  </TabPanel>
 				  <TabPanel>

@@ -265,14 +265,14 @@ header .user-block {
     /*right: 0;*/
     padding: 0;
     color: #fff;
-    background: #5f5f5f;
+    background: #772b2bf2;
     font-size: 14px;
 }
 .match-detail .header-title {
     padding: 5px 10px;
     text-align: left;
     z-index: 10;
-    background: #5f2424;
+    background: #693233bf;
 }
 .popup-match-detail {
     width: 100%;
@@ -351,4 +351,17 @@ header .user-block {
 .optionDisabled {
     background: #e6e6e6;
     cursor: no-drop !important;
+}
+.nation-team {
+    padding: 0;
+}
+.nation-team span{
+    display: inherit;
+}
+.match-detail .header-title i {
+    float: right;
+    font-size: 20px;
+    color: #fff;
+    margin-right: -5px;
+    cursor: pointer;
 }

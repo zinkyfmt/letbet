@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import groupArray from 'group-array';
 import dateFormat from 'dateformat';
+import firebase from 'firebase';
 
 const ROUND_STAGE = {
 	1: 'Group Stage - Round 1',
@@ -38,7 +39,7 @@ const MATCH_ARRAY = [
 		},
 		'datetime': '06/10/2018 16:00',
 		'group': 'B',
-		'handicap': 2.5,
+		'handicap': 3,
 		'round_stage': 1
 	},
 	{
@@ -55,7 +56,7 @@ const MATCH_ARRAY = [
 		},
 		'datetime': '06/10/2018 17:00',
 		'group': 'A',
-		'handicap': 2.5,
+		'handicap': 2,
 		'round_stage': 2
 	},
 	{
@@ -72,7 +73,7 @@ const MATCH_ARRAY = [
 		},
 		'datetime': '06/10/2018 18:00',
 		'group': 'B',
-		'handicap': 2.5,
+		'handicap': 1,
 		'round_stage': 2
 	},
 ];
@@ -88,14 +89,20 @@ export default class Match extends Component {
 		this.getRoundName = this.getRoundName.bind(this);
 		this.renderMatch = this.renderMatch.bind(this);
 	}
-	// componentDidMount() {
-	// 	console.log(MATCH_ARRAY);
-	// 	let a = groupArray(MATCH_ARRAY, 'round_stage');
-	// 	console.log(a[1]);
-	// }
-	// componentWillReceiveProps(nextProps){
-	// 	this.setState({uid: nextProps.uid})
-	// }
+	componentDidMount() {
+		// console.log(fire.collection('teams'));
+		// console.log(this.props.firebase.collection("matches"));
+        // fire.collection("matches").get().then(function(querySnapshot) {
+        //     querySnapshot.forEach(function(doc) {
+        //         // doc.data() is never undefined for query doc snapshots
+        //         console.log(doc.id, " => ", doc.data());
+        //     });
+        // });
+        // console.log(MATCH_ARRAY);
+		let a = groupArray(MATCH_ARRAY, 'round_stage');
+		// console.log(a[1]);
+	}
+
 	getRoundName(key) {
 		return ROUND_STAGE[key];
 	}
@@ -105,7 +112,10 @@ export default class Match extends Component {
 	underBet() {
 		console.log('u');
 	}
-
+    getMatchDetailByUid = (uid) => {
+		let match = MATCH_ARRAY.filter((item) => item.uid === uid);
+        this.props.getMatchDetailByUid(match[0]);
+    };
 	renderMatch() {
 		let matchObject = groupArray(MATCH_ARRAY, 'round_stage');
 		return Object.keys(matchObject).map((number) =>
@@ -114,7 +124,7 @@ export default class Match extends Component {
 				<div className="list-match">
 					{
 						matchObject[number].map((item) => {
-							return <MatchItem key={item.uid} matches={item}/>;
+							return <MatchItem getMatchDetailByUid={this.getMatchDetailByUid.bind(this)} key={item.uid} matches={item}/>;
 						})
 					}
 					<div className="clear-box"></div>
@@ -136,12 +146,9 @@ export class MatchItem extends Component {
 		super(props);
 	}
 
-	getMatchDetailByUid = (uid) => {
-		console.log(uid);
-	};
 	render() {
 		return (
-			<div className="item" key={this.props.matches.uid} onClick={this.getMatchDetailByUid.bind(this,this.props.matches.uid)}>
+			<div className="item" key={this.props.matches.uid} onClick={this.props.getMatchDetailByUid.bind(this,this.props.matches.uid)}>
 				<div className="item-header">
 					<span>Group {this.props.matches.group}</span>
 				</div>

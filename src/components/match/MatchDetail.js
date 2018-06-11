@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import MultiToggle from 'react-multi-toggle';
+import dateFormat from 'dateformat';
+import MaterialIcon, {colorPallet} from 'material-icons-react';
 
 const groupOptions = [
 	{
@@ -22,41 +24,43 @@ export default class MatchDetail extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			matches: null,
-			groupSize: 0
+			match_detail: this.props.match_detail,
+			groupSize: this.props.groupSize
 		};
 		this.onGroupSizeSelect = this.onGroupSizeSelect.bind(this);
 	}
-	componentDidMount() {
-		this.setState({matches: this.props.matches})
-	}
-	// componentWillReceiveProps(nextProps){
-	// 	this.setState({matches: nextProps.matches})
+	// componentDidMount() {
+	// 	this.setState({match_detail: this.props.match_detail})
 	// }
-	onGroupSizeSelect(value) {
-		false ? this.setState({ groupSize: value }) : false;
+	componentWillReceiveProps(nextProps){
+		this.setState({match_detail: nextProps.match_detail});
+        this.setState({groupSize: nextProps.groupSize})
 	}
-
+	onGroupSizeSelect(value) {
+		true ? this.setState({ groupSize: value }) : false;
+	}
 	render() {
 		return (
 			<div className="popup-match-detail">
-				<div className="header-title"><span>Match Detail</span></div>
-
+				<div className="header-title">
+					<span>Match Detail</span>
+					<i className="material-icons md-24 md-dark" onClick={this.props.closePopup.bind(this)}>close</i>
+				</div>
 				<div className="container-match">
-					<p><span>Thu, 16/12, 10:00 PM</span> - <span>Upcoming</span></p>
+					<p><span>{dateFormat(this.state.match_detail.datetime, 'ddd, mm/dd')}, {dateFormat(this.state.match_detail.datetime, 'h:MM TT')}</span> - <span>Upcoming</span></p>
 					<div className="row">
 						<div className="nation-team col-md-5">
-							<span>England</span>
-							<img src="//ssl.gstatic.com/onebox/media/sports/logos/5Y6kOqiOIv2C1sP9C_BWtA_48x48.png"/>
+							<span>{this.state.match_detail.home.name}</span>
+							<img src={this.state.match_detail.home.avatar}/>
 						</div>
 						<div className="score col-md-2">vs</div>
 						<div className="nation-team col-md-5">
-							<span>Russian</span>
-							<img src="//ssl.gstatic.com/onebox/media/sports/logos/5Y6kOqiOIv2C1sP9C_BWtA_48x48.png"/>
+							<span>{this.state.match_detail.away.name}</span>
+							<img src={this.state.match_detail.away.avatar}/>
 						</div>
 					</div>
 					<p><span>Goals Over/Under</span></p>
-					<div className="goals-number">2.5</div>
+					<div className="goals-number">{this.state.match_detail.handicap}</div>
 					<MultiToggle
 						options={groupOptions}
 						selectedOption={this.state.groupSize}
