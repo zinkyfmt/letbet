@@ -1,45 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from "./components/Header";
-import groupArray from 'group-array';
-import Dashboard from "./components/Dashboard";
+import User from "./components/User";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+// import groupArray from 'group-array';
+// import Dashboard from "./components/Dashboard";
+import MatchDetail from "./components/match/MatchDetail";
+import Match from "./components/match/Match";
 
-const MATCH_ARRAY = [
-	{
-		'uid': 1,
-		'home': {
-			'uid': 1,
-			'name': 'England',
-			'avatar': 'https://cdn4.vectorstock.com/i/thumb-large/08/23/england-flag-vector-570823.jpg'
-		},
-		'away': {
-			'uid': 2,
-			'name': 'Brazil',
-			'avatar': 'https://i.ebayimg.com/images/g/t4cAAOSwd4tUA8as/s-l300.jpg'
-		},
-		'date': '20/10/2018',
-		'time': '14:00:00',
-		'group': 'A',
-		'handicap': 2.5
-	},
-	{
-		'uid': 2,
-		'home': {
-			'uid': 3,
-			'name': 'Spain',
-			'avatar': 'https://cdn4.vectorstock.com/i/thumb-large/08/23/england-flag-vector-570823.jpg'
-		},
-		'away': {
-			'uid': 4,
-			'name': 'French',
-			'avatar': 'https://i.ebayimg.com/images/g/t4cAAOSwd4tUA8as/s-l300.jpg'
-		},
-		'date': '21/10/2018',
-		'time': '13:00:00',
-		'group': 'A',
-		'handicap': 3
-	},
-];
+
 class App extends Component {
 
 	constructor(props) {
@@ -53,22 +21,60 @@ class App extends Component {
 				name: null
 			}
 		};
-
 	}
 
 	componentDidMount() {
 		let user = localStorage.getItem('user');
 		let userObject = user ? JSON.parse(user) : {};
 		this.setState({user : userObject});
-		this.setState({matches:MATCH_ARRAY})
+		// this.setState({matches:MATCH_ARRAY})
 	}
 
+	logIn() {
+		console.log('sign in');
+		// let user = {
+		// 	uid: 1,
+		// 	name: 'Test User',
+		// 	email: 'test@gmail.com'
+		// };
+		// this.setState({name:'Test user'});
+		// localStorage.setItem('user',JSON.stringify(user));
+	}
+	logOut() {
+		console.log('aa');
+		// this.setState({name:null});
+		// localStorage.removeItem('user');
+	}
 	render() {
 		return (
 		  <div className="App">
-			<Header user={this.state.user}/>
+			  <header className="header">
+				  {/*<img src={logo} className="logo-header" height={200}/>*/}
+				  <div className="title-header"><span className="slogan">FIFA WORLD CUP RUSSIA 2018</span></div>
+				  <User user={this.state.user} logIn={this.logIn.bind(this)} logOut={this.logOut.bind(this)}/>
+				  <div className="clear-box"></div>
+			  </header>
+			  <Tabs>
+				  <TabList>
+					  <Tab>Matches</Tab>
+					  <Tab>Standings</Tab>
+					  <Tab>Summary</Tab>
+				  </TabList>
+				  <TabPanel>
+					  <div className="row">
+						  <div className="tab-content col-md-9"><Match /></div>
+						  <div className="match-detail col-md-3"><MatchDetail /></div>
+					  </div>
+				  </TabPanel>
+				  <TabPanel>
+					  <h2>Any content 2</h2>
+				  </TabPanel>
+				  <TabPanel>
+					  <h2>Any content 3</h2>
+				  </TabPanel>
+			  </Tabs>
 		  	{/*<SideBar />*/}
-			<Dashboard matches={this.state.matches}/>
+			{/*<Dashboard matches={this.state.matches}/>*/}
 		  </div>
 		);
 	}

@@ -7,25 +7,12 @@ class User extends Component {
 		this.state = {
 			name: this.props.user.name
 		};
-		this.signInForm = this.signInForm.bind(this);
-		this.logOut = this.logOut.bind(this);
-	}
-	signInForm() {
-		console.log('sign in');
-		let user = {
-			uid: 1,
-			name: 'Test User',
-			email: 'test@gmail.com'
-		};
-		this.setState({name:'Test user'});
-		localStorage.setItem('user',JSON.stringify(user));
-	}
-	logOut() {
-		this.setState({name:null});
-		localStorage.removeItem('user');
 	}
 	render() {
-		const userBlock = this.state.name ? <span>{this.state.name} | <a href="#" onClick={this.logOut}>Log Out</a></span> : <span> <a href="#" onClick={this.signInForm}>Log In</a></span>;
+		const userBlock = this.state.name ? <span>{this.state.name} | <a href="#" onClick={this.props.logOut}>Log Out</a></span>
+			: <div> <input className="input-login" placeholder="username" name="username"/>
+				<input className="input-login" placeholder="password" name="password" type="password"/>
+				<button className="btn" onClick={this.props.logIn}>Log In</button></div>;
 		return (
 			<div className="user-block">
 				{userBlock}
