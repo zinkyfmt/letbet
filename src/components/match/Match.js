@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import groupArray from 'group-array';
 import dateFormat from 'dateformat';
-import firebase from 'firebase';
+import "../firebase/firebase";
+import fireBase from 'firebase';
 
 const ROUND_STAGE = {
 	1: 'Group Stage - Round 1',
-	2: 'Group Stage - Round 2',
+	3: 'Group Stage - Round 2',
 };
 const MATCH_ARRAY = [
 	{
@@ -83,24 +84,29 @@ export default class Match extends Component {
 		super(props);
 		this.state = {
 			uid: null,
+			matches: []
 		};
 		this.overBet = this.overBet.bind(this);
 		this.underBet = this.underBet.bind(this);
 		this.getRoundName = this.getRoundName.bind(this);
 		this.renderMatch = this.renderMatch.bind(this);
+
 	}
 	componentDidMount() {
-		// console.log(fire.collection('teams'));
-		// console.log(this.props.firebase.collection("matches"));
-        // fire.collection("matches").get().then(function(querySnapshot) {
-        //     querySnapshot.forEach(function(doc) {
-        //         // doc.data() is never undefined for query doc snapshots
-        //         console.log(doc.id, " => ", doc.data());
-        //     });
-        // });
-        // console.log(MATCH_ARRAY);
-		let a = groupArray(MATCH_ARRAY, 'round_stage');
-		// console.log(a[1]);
+		let self = this;
+		const fireStore = fireBase.firestore();
+		const settings = {timestampsInSnapshots: true};
+		fireStore.settings(settings);
+		fireStore.collection("matches").get().then(function(querySnapshot) {
+			let matchesData = [];
+			querySnapshot.forEach(function(doc) {
+				// doc.data() is never undefined for query doc snapshots
+				let tmp = doc.data();
+				tmp.id = doc.id;
+				matchesData.push(tmp);
+			});
+			self.setState({matches:matchesData});
+		});
 	}
 
 	getRoundName(key) {
@@ -113,18 +119,22 @@ export default class Match extends Component {
 		console.log('u');
 	}
     getMatchDetailByUid = (uid) => {
-		let match = MATCH_ARRAY.filter((item) => item.uid === uid);
+		let match = this.state.matches.filter((item) => item.id === uid);
         this.props.getMatchDetailByUid(match[0]);
     };
 	renderMatch() {
-		let matchObject = groupArray(MATCH_ARRAY, 'round_stage');
+
+		let matchObject = {};
+		if (this.state.matches) {
+			matchObject = groupArray(this.state.matches, 'round_stage');
+		}
 		return Object.keys(matchObject).map((number) =>
 			<div key={number}>
 				<div className="title-row"><span>{this.getRoundName(number)}</span></div>
 				<div className="list-match">
 					{
 						matchObject[number].map((item) => {
-							return <MatchItem getMatchDetailByUid={this.getMatchDetailByUid.bind(this)} key={item.uid} matches={item}/>;
+							return <MatchItem getMatchDetailByUid={this.getMatchDetailByUid.bind(this)} key={item.id} matches={item}/>;
 						})
 					}
 					<div className="clear-box"></div>
@@ -144,22 +154,52 @@ export default class Match extends Component {
 export class MatchItem extends Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			match_id: this.props.matches.id,
+			group: this.props.matches.group,
+			datetime: this.props.matches.datetime,
+			away: {},
+			home: {}
+		};
 	}
 
+	componentDidMount() {
+		let self = this;
+		// Get a document, forcing the SDK to fetch from the offline cache.
+		this.props.matches.away.get().then(function(doc) {
+			// Document was found in the cache. If no cached document exists,
+			// an error will be returned to the 'catch' block below.
+			let away = doc.data();
+			away.id = doc.id;
+			self.setState({away});
+		}).catch(function(error) {
+			console.log("Error getting", error);
+		});
+		// Get a document, forcing the SDK to fetch from the offline cache.
+		this.props.matches.home.get().then(function(doc) {
+			// Document was found in the cache. If no cached document exists,
+			// an error will be returned to the 'catch' block below.
+			let home = doc.data();
+			home.id = doc.id;
+			self.setState({home});
+		}).catch(function(error) {
+			console.log("Error getting", error);
+		});
+	}
 	render() {
 		return (
-			<div className="item" key={this.props.matches.uid} onClick={this.props.getMatchDetailByUid.bind(this,this.props.matches.uid)}>
+			<div className="item" key={this.state.match_id} onClick={this.props.getMatchDetailByUid.bind(this,this.state.match_id)}>
 				<div className="item-header">
 					<span>Group {this.props.matches.group}</span>
 				</div>
 				<div className="item-content">
 					<div className="left-side-item">
-						<p><img src={this.props.matches.home.avatar}/><span>{this.props.matches.home.name}</span></p>
-						<p><img src={this.props.matches.away.avatar}/><span>{this.props.matches.away.name}</span></p>
+						<p><img src={this.state.home.avatar}/><span>{this.state.home.name}</span></p>
+						<p><img src={this.state.away.avatar}/><span>{this.state.away.name}</span></p>
 					</div>
 					<div className="right-side-datetime">
-						<span>{dateFormat(this.props.matches.datetime, 'ddd, mm/dd')}</span>
-						<span>{dateFormat(this.props.matches.datetime, 'h:MM TT')}</span>
+						<span>{dateFormat(this.state.datetime, 'ddd, mm/dd')}</span>
+						<span>{dateFormat(this.state.datetime, 'h:MM TT')}</span>
 					</div>
 					<div className="clear-box"></div>
 				</div>

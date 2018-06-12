@@ -6,16 +6,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 // import Dashboard from "./components/Dashboard";
 import MatchDetail from "./components/match/MatchDetail";
 import Match from "./components/match/Match";
-import fire from 'firebase';
 
-const config = {
-    apiKey: "AIzaSyBecLFfB_Dlvl1l66SQmR3fhXUnLeeUTno",
-    authDomain: "letbet-29f41.firebaseapp.com",
-    databaseURL: "https://letbet-29f41.firebaseio.com",
-    projectId: "letbet-29f41",
-    storageBucket: "letbet-29f41.appspot.com",
-    messagingSenderId: "795341636207"
-};
 
 class App extends Component {
 
@@ -31,27 +22,25 @@ class App extends Component {
 			},
 			match_detail: null,
 		};
-        fire.initializeApp(config);
-
-    }
+	}
 
 	componentDidMount() {
-        let firestore = fire.firestore();
-        const settings = {timestampsInSnapshots: true};
-        firestore.settings(settings);
-        let user = localStorage.getItem('user');
-		let userObject = user ? JSON.parse(user) : {};
-		this.setState({user : userObject});
-        var citiesRef = firestore.collection('matches').orderBy('datetime');
-        var allCities = citiesRef.get()
-            .then(snapshot => {
-                snapshot.forEach(doc => {
-                    console.log(doc.id, '=>', doc.data());
-                });
-            })
-            .catch(err => {
-                console.log('Error getting documents', err);
-            });
+		// let firestore = fire.firestore();
+		// const settings = {timestampsInSnapshots: true};
+		// firestore.settings(settings);
+        // let user = localStorage.getItem('user');
+		// let userObject = user ? JSON.parse(user) : {};
+		// this.setState({user : userObject});
+        // var citiesRef = firestore.collection('matches').orderBy('datetime');
+        // citiesRef.get()
+        //     .then(snapshot => {
+        //         snapshot.forEach(doc => {
+        //             console.log(doc.id, '=>', doc.data());
+        //         });
+        //     })
+        //     .catch(err => {
+        //         console.log('Error getting documents', err);
+        //     });
 		// this.setState({matches:MATCH_ARRAY})
 	}
     getMatchDetailByUid = (match_detail) => {
