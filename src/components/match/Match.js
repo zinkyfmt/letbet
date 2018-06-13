@@ -6,85 +6,16 @@ import fireBase from 'firebase';
 
 const ROUND_STAGE = {
 	1: 'Group Stage - Round 1',
-	3: 'Group Stage - Round 2',
+	2: 'Group Stage - Round 2',
 };
-const MATCH_ARRAY = [
-	{
-		'uid': 1,
-		'home': {
-			'uid': 1,
-			'name': 'England',
-			'avatar': '//ssl.gstatic.com/onebox/media/sports/logos/DTqIL8Ba3KIuxGkpXw5ayA_48x48.png'
-		},
-		'away': {
-			'uid': 2,
-			'name': 'Brazil',
-			'avatar': '//ssl.gstatic.com/onebox/media/sports/logos/zKLzoJVYz0bb6oAnPUdwWQ_48x48.png'
-		},
-		'datetime': '06/11/2018 21:00',
-		'group': 'A',
-		'handicap': 2.5,
-		'round_stage': 1
-	},
-	{
-		'uid': 2,
-		'home': {
-			'uid': 3,
-			'name': 'Russia',
-			'avatar': '//ssl.gstatic.com/onebox/media/sports/logos/5Y6kOqiOIv2C1sP9C_BWtA_48x48.png'
-		},
-		'away': {
-			'uid': 4,
-			'name': 'Arabia Saudi',
-			'avatar': '//ssl.gstatic.com/onebox/media/sports/logos/QoAJxO46fHid3_T-7nRZ0Q_48x48.png'
-		},
-		'datetime': '06/10/2018 16:00',
-		'group': 'B',
-		'handicap': 3,
-		'round_stage': 1
-	},
-	{
-		'uid': 3,
-		'home': {
-			'uid': 1,
-			'name': 'England',
-			'avatar': '//ssl.gstatic.com/onebox/media/sports/logos/DTqIL8Ba3KIuxGkpXw5ayA_48x48.png'
-		},
-		'away': {
-			'uid': 2,
-			'name': 'Brazil',
-			'avatar': '//ssl.gstatic.com/onebox/media/sports/logos/zKLzoJVYz0bb6oAnPUdwWQ_48x48.png'
-		},
-		'datetime': '06/10/2018 17:00',
-		'group': 'A',
-		'handicap': 2,
-		'round_stage': 2
-	},
-	{
-		'uid': 4,
-		'home': {
-			'uid': 3,
-			'name': 'Russia',
-			'avatar': '//ssl.gstatic.com/onebox/media/sports/logos/5Y6kOqiOIv2C1sP9C_BWtA_48x48.png'
-		},
-		'away': {
-			'uid': 4,
-			'name': 'Arabia Saudi',
-			'avatar': '//ssl.gstatic.com/onebox/media/sports/logos/QoAJxO46fHid3_T-7nRZ0Q_48x48.png'
-		},
-		'datetime': '06/10/2018 18:00',
-		'group': 'B',
-		'handicap': 1,
-		'round_stage': 2
-	},
-];
 
 export default class Match extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			uid: null,
-			matches: []
+			matches: [],
+			user_id: this.props.user_id
 		};
 		this.overBet = this.overBet.bind(this);
 		this.underBet = this.underBet.bind(this);
@@ -118,12 +49,14 @@ export default class Match extends Component {
 	underBet() {
 		console.log('u');
 	}
-    getMatchDetailByUid = (uid) => {
+    getMatchDetailByUid = (uid, bet_value, bet_id) => {
 		let match = this.state.matches.filter((item) => item.id === uid);
-        this.props.getMatchDetailByUid(match[0]);
+        this.props.getMatchDetailByUid(match[0],bet_value, bet_id);
     };
+	componentWillReceiveProps(nextProps){
+		this.setState({user_id:nextProps.user_id});
+	}
 	renderMatch() {
-
 		let matchObject = {};
 		if (this.state.matches) {
 			matchObject = groupArray(this.state.matches, 'round_stage');
@@ -134,7 +67,7 @@ export default class Match extends Component {
 				<div className="list-match">
 					{
 						matchObject[number].map((item) => {
-							return <MatchItem getMatchDetailByUid={this.getMatchDetailByUid.bind(this)} key={item.id} matches={item}/>;
+							return <MatchItem user_id={this.state.user_id} getMatchDetailByUid={this.getMatchDetailByUid.bind(this)} key={item.id} matches={item}/>;
 						})
 					}
 					<div className="clear-box"></div>
@@ -159,10 +92,12 @@ export class MatchItem extends Component {
 			group: this.props.matches.group,
 			datetime: this.props.matches.datetime,
 			away: {},
-			home: {}
+			home: {},
+			user_id: this.props.user_id,
+			bet_value: 0,
+			bet_id: null
 		};
 	}
-
 	componentDidMount() {
 		let self = this;
 		// Get a document, forcing the SDK to fetch from the offline cache.
@@ -185,12 +120,27 @@ export class MatchItem extends Component {
 		}).catch(function(error) {
 			console.log("Error getting", error);
 		});
+
+		let fireStore = fireBase.firestore();
+		const settings = {timestampsInSnapshots: true};
+		fireStore.settings(settings);
+		fireStore.collection("bet").where("match_id",'==',this.state.match_id).where("user_id",'==',this.state.user_id).get().then(function(querySnapshot) {
+			querySnapshot.forEach(function(doc) {
+				self.setState({bet_value:doc.data().bet_value});
+				self.setState({bet_id:doc.id});
+			});
+		}).catch(function(error) {
+			console.log("Error getting documents: ", error);
+		});
+	}
+	componentWillReceiveProps(nextProps){
+		this.setState({user_id:nextProps.user_id});
 	}
 	render() {
 		return (
-			<div className="item" key={this.state.match_id} onClick={this.props.getMatchDetailByUid.bind(this,this.state.match_id)}>
+			<div className="item" key={this.state.match_id} onClick={this.props.getMatchDetailByUid.bind(this,this.state.match_id,this.state.bet_value, this.state.bet_id)}>
 				<div className="item-header">
-					<span>Group {this.props.matches.group}</span>
+					<span>Group {this.props.matches.group} - {this.state.bet_value}</span>
 				</div>
 				<div className="item-content">
 					<div className="left-side-item">

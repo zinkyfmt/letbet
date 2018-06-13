@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import './App.css';
 import User from "./components/User";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import ReactDOM from 'react-dom';
 // import groupArray from 'group-array';
 // import Dashboard from "./components/Dashboard";
 import MatchDetail from "./components/match/MatchDetail";
 import Match from "./components/match/Match";
-
+import "./components/firebase/firebase";
+import fireBase from 'firebase';
 
 class App extends Component {
 
@@ -14,17 +16,23 @@ class App extends Component {
 		super(props);
 
 		this.state = {
+			isLogin: false,
 			matches: [],
-			user: {
-				email: null,
-				uid: null,
-				name: null
-			},
+			user: {},
 			match_detail: null,
+			betValue: 0,
+			bet_id: null
 		};
 	}
 
 	componentDidMount() {
+		let user = localStorage.getItem("user");
+		let isLogin = user ? true : false;
+		if (localStorage.getItem("user")) {
+			this.setState({isLogin: isLogin});
+			user = JSON.parse(user);
+			this.setState({user});
+		}
 		// let firestore = fire.firestore();
 		// const settings = {timestampsInSnapshots: true};
 		// firestore.settings(settings);
@@ -43,34 +51,52 @@ class App extends Component {
         //     });
 		// this.setState({matches:MATCH_ARRAY})
 	}
-    getMatchDetailByUid = (match_detail) => {
+    getMatchDetailByUid = (match_detail, bet_value, bet_id) => {
         this.setState({match_detail});
+		this.setState({bet_id});
+		this.setState({betValue:bet_value});
     };
-	logIn() {
-		console.log('sign in');
-		// let user = {
-		// 	uid: 1,
-		// 	name: 'Test User',
-		// 	email: 'test@gmail.com'
-		// };
-		// this.setState({name:'Test user'});
-		// localStorage.setItem('user',JSON.stringify(user));
+	logIn(username, password) {
+		let self = this;
+		let fireStore = fireBase.firestore();
+		const settings = {timestampsInSnapshots: true};
+		fireStore.settings(settings);
+		fireStore.collection("users").where("username",'==',username.trim()).where("password",'==',password.trim()).get().then(function(querySnapshot) {
+			console.log(querySnapshot);
+			if(querySnapshot.empty) {
+				alert('Wrong username/password. Please try again');
+			}
+			querySnapshot.forEach(function(doc) {
+				// doc.data() is never undefined for query doc snapshots
+				let temp = doc.data();
+					temp.id = doc.id;
+				self.setState({user:temp});
+				self.setState({isLogin:true});
+				localStorage.setItem('user',JSON.stringify(temp));
+			});
+		}).catch(function(error) {
+			console.log("Error getting documents: ", error);
+		});
+
 	}
 	logOut() {
-		console.log('aa');
-		// this.setState({name:null});
-		// localStorage.removeItem('user');
+		localStorage.removeItem('user');
+		this.setState({user:{},isLogin:false});
 	}
     closePopup() {
         this.setState({match_detail:null});
 	};
+	updateBetId(betId) {
+		this.setState({bet_id:betId});
+		console.log(betId);
+	}
 	render() {
 		return (
 		  <div className="App">
 			  <header className="header">
 				  {/*<img src={logo} className="logo-header" height={200}/>*/}
-				  <div className="title-header"><span className="slogan">FIFA WORLD CUP RUSSIA 2018</span></div>
-				  <User user={this.state.user} logIn={this.logIn.bind(this)} logOut={this.logOut.bind(this)}/>
+				  <div className="title-header"><span className="slogan">Fifa world cup - Russia 2018</span></div>
+				  <User user={this.state.user} logIn={this.logIn.bind(this)} logOut={this.logOut.bind(this)} isLogin={this.state.isLogin}/>
 				  <div className="clear-box"></div>
 			  </header>
 			  <Tabs>
@@ -81,8 +107,8 @@ class App extends Component {
 				  </TabList>
 				  <TabPanel>
 					  <div className="row">
-						  <div className="tab-content col-md-9"><Match getMatchDetailByUid={this.getMatchDetailByUid.bind(this)}/></div>
-						  {this.state.match_detail ? <div className="match-detail col-md-3"><MatchDetail closePopup={this.closePopup.bind(this)} groupSize={0} match_detail={this.state.match_detail}/></div> : ""}
+						  <div className="tab-content col-md-9"><Match user_id={this.state.user.id} getMatchDetailByUid={this.getMatchDetailByUid.bind(this)}/></div>
+						  {this.state.match_detail ? <div className="match-detail col-md-3"><MatchDetail user_id={this.state.user.id} updateBetId={this.updateBetId.bind(this)} closePopup={this.closePopup.bind(this)} groupSize={this.state.betValue} bet_id={this.state.bet_id} match_detail={this.state.match_detail}/></div> : ""}
 					  </div>
 				  </TabPanel>
 				  <TabPanel>

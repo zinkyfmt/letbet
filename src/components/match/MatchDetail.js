@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import MultiToggle from 'react-multi-toggle';
 import dateFormat from 'dateformat';
 import 'material-icons-react';
+import "../firebase/firebase";
+import fireBase from 'firebase';
+
 const groupOptions = [
 	{
 		displayName: 'Under',
@@ -23,13 +26,15 @@ export default class MatchDetail extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			user_id: this.props.user_id,
 			match_id: this.props.match_detail.id,
 			group: this.props.match_detail.group,
 			datetime: this.props.match_detail.datetime,
 			away: {},
 			home: {},
 			handicap: this.props.match_detail.handicap,
-			groupSize: this.props.groupSize
+			groupSize: this.props.groupSize,
+			bet_id: this.props.bet_id
 		};
 		this.onGroupSizeSelect = this.onGroupSizeSelect.bind(this);
 	}
@@ -91,8 +96,39 @@ export default class MatchDetail extends Component {
         });
 
 	}
+
 	onGroupSizeSelect(value) {
-		true ? this.setState({ groupSize: value }) : false;
+		let self = this;
+		const fireStore = fireBase.firestore();
+		const settings = {timestampsInSnapshots: true};
+		fireStore.settings(settings);
+		if (this.state.bet_id) {
+			let betRef = fireStore.collection('bet').doc(this.state.bet_id);
+			betRef.set({
+				match_id: this.state.match_id,
+				user_id: this.state.user_id,
+				bet_value: value
+			}).then(function() {
+				console.log("Document successfully written!");
+				self.setState({ groupSize: value })
+			}).catch(function(error) {
+				console.error("Error writing document: ", error);
+			});
+		} else {
+			fireStore.collection('bet').add({
+				match_id: this.state.match_id,
+				user_id: this.state.user_id,
+				bet_value: value
+			}).then(function(docRef) {
+				console.log(docRef.id);
+				// self.props.updateBetId(docRef.id);
+			}).catch(function(error) {
+				console.error("Error writing document: ", error);
+			});
+		}
+
+
+		// true ? this.setState({ groupSize: value }) : false;
 	}
 	render() {
 		return (
