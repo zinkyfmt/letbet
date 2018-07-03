@@ -1,9 +1,9 @@
 .App {
   text-align: center;
-    background: #fff;
+  background: #fff;
 }
 p {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -33,346 +33,455 @@ header {
   margin: 0 auto;
   background: #e47676;
   /*padding: 15px;*/
-    font-size: 18px;
-    color: #fff;
+  font-size: 18px;
+  color: #fff;
 }
 .wrapper {
   width: 1024px;
   background: #282c34;
-    color: #ffffff;
+  color: #ffffff;
   height: auto;
   margin: 0 auto;
   padding: 10px;
 }
 .box {
-    text-decoration: none;
-    text-underline: none;
-    text-align: left;
-    border: 1px solid #ddd;
-    border-radius: 3px;
+  text-decoration: none;
+  text-underline: none;
+  text-align: left;
+  border: 1px solid #ddd;
+  border-radius: 3px;
 }
 .box a {
-    text-decoration: none;
-    text-underline: none;
+  text-decoration: none;
+  text-underline: none;
 }
 .header-box {
-    padding: 5px 10px;
-    background-color: #282c34;
-    border-bottom: 1px solid #e1e4e8;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
+  padding: 5px 10px;
+  background-color: #282c34;
+  border-bottom: 1px solid #e1e4e8;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
 }
 .match-row {
-    padding: 5px 15px;
+  padding: 5px 15px;
 }
 .table{
-    width: 100%;
+  width: 100%;
 }
 img.avatar-team {
-    width: 50px;
-    height: 50px;
-    float: left;
+  width: 35px;
+  height: 35px;
+  float: left;
 }
 .table td, .table th {
-    vertical-align: middle !important;
-    text-align: center;
-    font-size: 14px;
-    padding: 10px !important;
+  vertical-align: middle !important;
+  text-align: center;
+  font-size: 14px;
+  padding: 10px !important;
 }
 .table > .time{
-    width: 15%;
+  width: 15%;
 }
 .table > .home-team {
-    text-align: right;
+  text-align: right;
 }
 .table > .away-team {
-    text-align: left;
+  text-align: left;
 }
 header .title-header{
-    float: left;
-    padding: 10px 20px;
+  float: left;
+  padding: 10px 20px;
 }
 header .title-header .slogan{
-    color: #fff;
+  color: #fff;
 }
 header .user-block {
-    padding: 10px 20px;
-    float: right;
+  padding: 10px 20px;
+  float: right;
 }
 .clear-box {
-    clear: both;
+  clear: both;
 }
 .input-login {
-    font-size: 11px;
-    color: #fff;
-    height: 25px;
-    border: 0;
-    outline: 0;
-    margin: 0 5px;
-    padding: 0 5px 0 6px;
-    border-radius: 1px;
-    background-color: #bb6a6a;
-    display: inline-block;
-    width: 100px;
-    vertical-align: top;
+  font-size: 11px;
+  color: #fff;
+  height: 25px;
+  border: 0;
+  outline: 0;
+  margin: 0 5px;
+  padding: 0 5px 0 6px;
+  border-radius: 1px;
+  background-color: #bb6a6a;
+  display: inline-block;
+  width: 100px;
+  vertical-align: top;
 }
 .react-tabs__tab-list {
-    box-shadow: 0px 3px 2px #ddd;
-    margin: 0 0 5px;
-    padding: 0;
-    background: #e47575;
-    text-transform: uppercase;
-    color: #fff;
+  box-shadow: 0px 3px 2px #ddd;
+  margin: 0 0 5px;
+  padding: 0;
+  background: #e47575;
+  text-transform: uppercase;
+  color: #fff;
 }
 
 .react-tabs__tab {
-    position: relative;
-    display: inline-block;
-    border: 1px solid transparent;
-    border-bottom: none;
-    bottom: -1px;
-    position: relative;
-    list-style: none;
-    padding: 8px 40px;
-    cursor: pointer;
+  position: relative;
+  display: inline-block;
+  border: 1px solid transparent;
+  border-bottom: none;
+  bottom: -1px;
+  position: relative;
+  list-style: none;
+  padding: 8px 40px;
+  cursor: pointer;
 }
 .react-tabs__tab:hover {
-    background: #deb4b4;
-    border-bottom: 3px solid #fff;
-    border-radius: 5px 5px 0 0;
+  background: #deb4b4;
+  border-bottom: 3px solid #fff;
+  border-radius: 5px 5px 0 0;
 }
 .react-tabs__tab--selected {
-    /*background: #fff;*/
-    border-bottom: 3px solid #fff;
-    color: black;
-    border-radius: 5px 5px 0 0;
+  /*background: #fff;*/
+  border-bottom: 3px solid #fff;
+  color: black;
+  border-radius: 5px 5px 0 0;
 }
 
 .react-tabs__tab--disabled {
-    color: GrayText;
-    cursor: default;
+  color: GrayText;
+  cursor: default;
 }
 
 .react-tabs__tab:focus {
-    box-shadow: 0 0 5px hsl(208, 99%, 50%);
-    border-color: hsl(208, 99%, 50%);
-    outline: none;
+  box-shadow: 0 0 5px hsl(208, 99%, 50%);
+  border-color: hsl(208, 99%, 50%);
+  outline: none;
 }
 
 .react-tabs__tab:focus:after {
-    content: "";
-    position: absolute;
-    height: 5px;
-    left: -4px;
-    right: -4px;
-    bottom: -5px;
-    background: #fff;
+  content: "";
+  position: absolute;
+  height: 5px;
+  left: -4px;
+  right: -4px;
+  bottom: -5px;
+  background: #fff;
 }
 
 .react-tabs__tab-panel {
-    width: 900px;
-    margin: 0 auto;
-    display: none;
+  width: 900px;
+  margin: 0 auto;
+  display: none;
 }
 
 .react-tabs__tab-panel--selected {
-    display: block;
+  display: block;
 }
 .btn {
-    margin-top: -3px;
-    padding: 5px 7px;
-    display: inline-block;
-    color: rgba(255, 255, 255, 0.9);
-    background-color: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.2) !important;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 0.3rem;
-    transition: color 0.2s, background-color 0.2s, border-color 0.2s;
-    text-decoration: none;
-    font-size: 11px;
-    cursor: pointer;
+  margin-top: -3px;
+  padding: 5px 7px;
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.9);
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 0.3rem;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+  text-decoration: none;
+  font-size: 11px;
+  cursor: pointer;
 }
 .tab-content {
-    width: 800px;
-    margin: 0 auto;
+  width: 800px;
+  margin: 0 auto;
 }
 .title-row {
-    padding: 5px;
-    font-size: 12px;
-    text-align: left;
-    background: #f1f5f9;
-    border: 1px solid #efecec;
+  padding: 5px;
+  font-size: 12px;
+  text-align: left;
+  background: #f1f5f9;
+  border: 1px solid #efecec;
 }
 .title-row span {
-    margin-left: 15px;
+  margin-left: 15px;
 }
 .list-match {
-    width: 100%;
-    font-size: 15px;
-    text-align: left;
+  width: 100%;
+  font-size: 15px;
+  text-align: left;
 }
 .list-match .item {
-    width: 50%;
-    float: left;
-    border: 1px solid #d8dad8;
-    border-top: none;
+  width: 50%;
+  float: left;
+  border: 1px solid #d8dad8;
+  border-top: none;
 }
 .list-match .item:hover {
-    cursor: pointer;
-    background: #f9f9f9ba;
+  cursor: pointer;
+  background: #f9f9f9ba;
 }
 .list-match .item .item-header {
-    font-size: 11px;
-    padding: 10px 0 5px 15px;
-    text-align: left;
+  font-size: 11px;
+  padding: 10px 0 5px 15px;
+  text-align: left;
 }
 .list-match .item .item-content{
-    width: 100%;
-    margin-bottom: 10px;
+  width: 100%;
+  margin-bottom: 10px;
 }
 .list-match .item .left-side-item {
-    width: 70%;
-    float: left;
-    padding: 10px;
-    border-right: 1px solid #ccc;
+  width: 70%;
+  float: left;
+  padding: 10px;
+  border-right: 1px solid #ccc;
 }
 .list-match .item .left-side-item p{
-    margin-left: 15px;
-    font-size: 14px;
-    font-weight: 600;
+  margin-left: 15px;
+  font-size: 14px;
+  font-weight: 600;
 }
 .list-match .item .left-side-item p span{
-    margin-left: 15px;
+  margin-left: 15px;
 }
 .list-match .item .left-side-item img {
-    width: 30px;
+  width: 30px;
 }
 .list-match .item .right-side-datetime {
-    margin-top: 10px;
-    width: 30%;
-    float: right;
-    padding: 10px;
-    text-align: center;
-    font-size: 15px;
+  margin-top: 10px;
+  width: 30%;
+  float: right;
+  padding: 10px;
+  text-align: center;
+  font-size: 15px;
 }
 .list-match .item .right-side-datetime span{
   display: inherit;
 }
 .match-detail {
-    /*position: absolute;*/
-    /*top: 100px;*/
-    /*right: 0;*/
-    padding: 0;
-    color: #fff;
-    background: #772b2bf2;
-    font-size: 14px;
+  /*position: absolute;*/
+  /*top: 100px;*/
+  /*right: 0;*/
+  padding: 0;
+  color: #fff;
+  background: #772b2bf2;
+  font-size: 14px;
 }
 .match-detail .header-title {
-    padding: 5px 10px;
-    text-align: left;
-    z-index: 10;
-    background: #693233bf;
+  padding: 5px 10px;
+  text-align: left;
+  z-index: 10;
+  background: #693233bf;
 }
 .popup-match-detail {
-    width: 100%;
+  width: 100%;
 }
 .container-match {
-    font-size: 11px;
-    padding: 10px;
+  font-size: 11px;
+  padding: 10px;
 }
 .container-match p {
-    text-align: left;
-    margin-top: 10px;
-    border-bottom: 1px solid;
+  text-align: left;
+  margin-top: 10px;
+  border-bottom: 1px solid;
 }
 .container-match .row {
-    font-size: 12px;
-    margin: 20px 0;
+  font-size: 12px;
+  margin: 20px 0;
 }
 .container-match .row img{
-    width: 35px;
+  width: 35px;
 }
 .container-match .row .score {
-    vertical-align: middle;
-    margin-top: 20px;
+  vertical-align: middle;
+  margin-top: 20px;
 }
 .goals-number {
-    font-size: 20px;
-    font-weight: 700;
-    margin: 25px;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 25px;
 }
 .toggle-wrapper {
-    margin: 0.5em auto;
+  margin: 0.5em auto;
 }
 
 .toggle-wrapper label {
-    padding: 0.3em;
-    font-size: 17px;
-    display: block;
+  padding: 0.3em;
+  font-size: 17px;
+  display: block;
 }
 
 .toggleContainer {
-    width: 100%;
-    position: relative;
-    background: #ffffff;
-    border: 1px solid #eeeeee;
+  width: 100%;
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #eeeeee;
 }
 
 .toggleContainer .toggleOption {
-    display: inline-block;
-    position: relative;
-    z-index: 1;
-    text-align: center;
-    height: 40px;
-    line-height: 40px;
-    cursor: pointer;
-    transition: all 0.5s ease-in-out;
-    color: #807b77;
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  color: #807b77;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .toggleContainer .toggleOption.selected {
-    color: #ffffff;
-    cursor: initial;
+  color: #ffffff;
+  cursor: initial;
 }
 
 .toggleContainer .toggle {
-    position: absolute;
-    height: 100%;
-    bottom: 0;
-    left: 0;
-    transition: all 0.4s ease-in-out;
-    background: #df5d5d;
+  position: absolute;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  transition: all 0.4s ease-in-out;
+  background: #df5d5d;
 }
 
 .optionDisabled {
-    background: #e6e6e6;
-    cursor: no-drop !important;
+  background: #e6e6e6;
+  cursor: no-drop !important;
 }
 .nation-team {
-    padding: 0;
+  padding: 0;
 }
 .nation-team span{
-    display: inherit;
+  display: inherit;
 }
 .match-detail .header-title i {
-    float: right;
-    font-size: 20px;
-    color: #fff;
-    margin-right: -5px;
-    cursor: pointer;
+  float: right;
+  font-size: 20px;
+  color: #fff;
+  margin-right: -5px;
+  cursor: pointer;
 }
 .slogan {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }
 .user-avatar {
-    width: 30px;
-    margin-right: 5px;
+  width: 30px;
+  margin-right: 5px;
 }
 .user-login {
-    font-size: 14px;
-    font-weight: 600;
+  font-size: 14px;
+  font-weight: 600;
+}
+ul li {
+  text-decoration: none;
+  list-style: none;
+}
+.teams-board {
+  font-size: 13px;
+  color: #8d8e8d;
+}
+.teams-board ul {
+  margin-left: -40px;
+  margin-top: 0;
+}
+.teams-board ul li {
+  border-bottom: 1px solid #7b73738a;
+}
+.teams-board .group-name{
+  margin: 10px;
+  font-size: 16px;
+}
+.teams-board table {
+  border-collapse: inherit;
+  border-spacing: 0;
+  margin-left: 15px;
+  margin-bottom: 15px;
+  width: 96%;
+}
+.teams-board table tr {
+  border-bottom: 1px solid #ccc;
+}
+.teams-board table tr td {
+  text-align: center;
+  padding: 5px 0;
+  border-bottom: 1px solid #ccc;
+}
+.teams-board table tr td.left-text {
+  text-align: left;
+}
+.teams-board .team-content {
+  display: table;
+}
+.teams-board .team-content span {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 15px;
+}
+.teams-board .team-content .avatar-team {
+  margin-right: 10px;
+}
+.teams-board .small-column {
+  width: 30px;
+}
+.teams-board .lst-row {
+  border-bottom: none !important;
+}
+.popup-content {
+  width: 600px !important;
+  max-width: 800px !important;
+  border-radius: 5px !important;;
+  padding: 0 !important;
+}
+.modal {
+  border-radius: 5px;
+  font-size: 15px;
+}
+.header-title-popup{
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  font-weight: 700;
+}
+.body-popup {
+  padding: 20px;
+  background: #daeaea91;
+  color: #4a415d;
+}
+.footer-popup {
+  padding: 10px;
+  border-top: 1px solid #ccc;
+  font-weight: 700;
+  text-align: right;
+}
+.btn {
+  background-color: #179db3;
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin-left: 5px;
+}
+.popup-add {
+  margin: 5px;
+}
+input.input-text {
+  height: 30px;
+  padding: 5px;
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: none;
+  border:none;
+  margin: 5px ;
+}
+input.half-width {
+  width: 45%;
+}
+input.full-width {
+  width: 100%;
 }

@@ -1,22 +1,19 @@
 {
-  "name": "letbet",
+  "name": "comment-management",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "bootstrap": "^4.0.0-alpha.6",
-    "dateformat": "^3.0.3",
-    "firebase": "^5.0.4",
-    "group-array": "^0.3.3",
-    "material-icons-react": "^1.0.0",
-    "react": "^16.4.0",
-    "react-bootstrap": "^0.32.1",
-    "react-bootstrap-table": "^4.3.1",
-    "react-dom": "^16.4.0",
-    "react-multi-toggle": "^1.1.0",
-    "react-router-dom": "^4.2.2",
+    "firebase": "^5.1.0",
+    "npm": "^6.1.0",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
     "react-scripts": "1.1.4",
-    "react-table": "^6.8.6",
-    "react-tabs": "^2.2.2"
+    "react-tabs": "^2.2.2",
+    "reactjs-popup": "^1.1.1",
+    "redux": "^4.0.0",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",

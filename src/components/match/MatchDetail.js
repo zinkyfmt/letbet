@@ -121,7 +121,7 @@ export default class MatchDetail extends Component {
 				bet_value: value
 			}).then(function(docRef) {
 				console.log(docRef.id);
-				// self.props.updateBetId(docRef.id);
+				self.props.updateBetId(docRef.id);
 			}).catch(function(error) {
 				console.error("Error writing document: ", error);
 			});
