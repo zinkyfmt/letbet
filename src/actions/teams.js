@@ -46,8 +46,12 @@ export function fetchProducts() {
 export function addProducts(obj) {
 	// Add a new document with a generated id.
 	const fireStore = initSettingFireStore();
-	return dispatch => fireStore.collection("teams").add(obj).then(response => {
-		obj.id = response.id;
-		return dispatch(addProductsSuccess(obj))
-	});
+	fireStore.collection("teams").add(obj).then();
+	obj.id = Date.now();
+	return addProductsSuccess(obj);
+	// const fireStore = initSettingFireStore();
+	// return dispatch => fireStore.collection("teams").add(obj).then(response => {
+	// 	obj.id = response.id;
+	// 	return dispatch(addProductsSuccess(obj))
+	// });
 }

@@ -15,19 +15,19 @@ class Layout extends Component {
 				</header>
 				<Tabs>
 					<TabList>
-						<Tab>Matches</Tab>
 						<Tab>Standings</Tab>
+						<Tab>Matches</Tab>
 						<Tab>Summary</Tab>
 					</TabList>
 					<TabPanel>
 						<div className="row">
-							<div className="tab-content col-md-9"><Match/></div>
+							<div className="tab-content col-md-9"><Standing/></div>
 							{/*{this.state.match_detail ? <div className="match-detail col-md-3"><MatchDetail user_id={this.state.user.id} updateBetId={this.updateBetId.bind(this)} groupSize={this.state.betValue} closePopup={this.closePopup.bind(this)} groupSize={this.state.betValue} bet_id={this.state.bet_id} match_detail={this.state.match_detail}/></div> : ""}*/}
 						</div>
 					</TabPanel>
 					<TabPanel>
 						<div className="row">
-							<div className="tab-content col-md-9"><Standing/></div>
+							<div className="tab-content col-md-9"><Match/></div>
 							{/*{this.state.match_detail ? <div className="match-detail col-md-3"><MatchDetail user_id={this.state.user.id} updateBetId={this.updateBetId.bind(this)} groupSize={this.state.betValue} closePopup={this.closePopup.bind(this)} groupSize={this.state.betValue} bet_id={this.state.bet_id} match_detail={this.state.match_detail}/></div> : ""}*/}
 						</div>
 					</TabPanel>

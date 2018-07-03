@@ -2,29 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fb94018-8360-446e-a698-ddba019b665c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/letbet.iml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/firebase-debug.log" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
-      <change beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" afterPath="$PROJECT_DIR$/src/App.css" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" afterPath="$PROJECT_DIR$/src/App.js" />
-      <change beforePath="$PROJECT_DIR$/src/components/Dashboard.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/components/User.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/components/firebase/auth.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/components/firebase/firebase.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/components/firebase/index.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/components/match/Match.js" afterPath="$PROJECT_DIR$/src/components/match/Match.js" />
-      <change beforePath="$PROJECT_DIR$/src/components/match/MatchDetail.js" afterPath="$PROJECT_DIR$/src/components/match/MatchDetail.js" />
-      <change beforePath="$PROJECT_DIR$/src/components/match/UpComing.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" afterPath="$PROJECT_DIR$/src/index.css" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" afterPath="$PROJECT_DIR$/src/index.js" />
-      <change beforePath="$PROJECT_DIR$/src/wc-russia-2018.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/actions/teams.js" afterPath="$PROJECT_DIR$/src/actions/teams.js" />
+      <change beforePath="$PROJECT_DIR$/src/components/Layout.js" afterPath="$PROJECT_DIR$/src/components/Layout.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -48,11 +27,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="teams.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Layout.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/Layout.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="22" column="45" lean-forward="true" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="teams.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/actions/teams.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="41" column="1" lean-forward="true" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
+            <state relative-caret-position="352">
+              <caret line="49" column="24" lean-forward="true" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -94,6 +85,7 @@
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/components/match/Match.js" />
         <option value="$PROJECT_DIR$/src/actions/teams.js" />
+        <option value="$PROJECT_DIR$/src/components/Layout.js" />
       </list>
     </option>
   </component>
@@ -149,13 +141,6 @@
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="components" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
-            <path>
-              <item name="letbet" type="b2602c69:ProjectViewProjectNode" />
-              <item name="letbet" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="components" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="match" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -203,12 +188,12 @@
       <workItem from="1529923679480" duration="2267000" />
       <workItem from="1529995628659" duration="70000" />
       <workItem from="1530177144270" duration="8218000" />
-      <workItem from="1530528352671" duration="6977000" />
+      <workItem from="1530528352671" duration="7788000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55325000" />
+    <option name="totallyTimeSpent" value="56136000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -245,14 +230,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/firebase/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="2" lean-forward="false" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/match/Match.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -658,6 +635,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/teams.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="49" column="24" lean-forward="true" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Standing.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="241">
@@ -669,11 +654,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/teams.js">
+    <entry file="file://$PROJECT_DIR$/src/components/Layout.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="41" column="1" lean-forward="true" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
-          <folding />
+        <state relative-caret-position="272">
+          <caret line="22" column="45" lean-forward="true" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
