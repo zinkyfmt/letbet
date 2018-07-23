@@ -10,7 +10,6 @@ export default class MatchRow extends Component {
 		this.underBet = this.underBet.bind(this);
 	}
 	componentWillMount() {
-		console.log(this.props.item);
 	}
 	componentWillReceiveProps(nextProps){
 		this.setState({uid: nextProps.uid})

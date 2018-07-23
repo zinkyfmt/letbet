@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import Popup from "reactjs-popup";
-
 import {fetchProducts, addProducts} from "../actions/teams";
 
 const GROUP_NAME = ["A","B","C","D","E","F","G","H"];
@@ -9,10 +8,10 @@ class Standing extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			isAdmin: true,
-			name: 'France',
-			group: 'C',
-			avatar: '//ssl.gstatic.com/onebox/media/sports/logos/z3JEQB3coEAGLCJBEUzQ2A_48x48.png'
+			isAdmin: false,
+			name: '',
+			group: '',
+			avatar: '',
 		};
 		this.getListByGroup = this.getListByGroup.bind(this);
 	}
@@ -33,7 +32,6 @@ class Standing extends Component {
 		this.setState({ openPopup: false });
 	};
 	saveTeam = () => {
-		console.log('save');
 		const newTeam = {
 			avatar: this.state.avatar,
 			group: this.state.group,

@@ -55,7 +55,13 @@ export default function (state = initialState, action) {
 			};
 		case ADD_PRODUCTS_SUCCESS:
 			state.items.push(action.payload);
-			console.log(state);
+			return {
+				...state,
+				loading: false,
+				openPopup: false
+			};
+		case 'ADD_MATCH':
+			console.log(action);
 			return {
 				...state,
 				loading: false,

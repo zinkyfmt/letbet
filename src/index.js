@@ -9,7 +9,6 @@ import {Provider} from 'react-redux';
 import Layout from "./components/Layout";
 
 const store = configureStore();
-
 ReactDOM.render(
 	<Provider store={store}>
 		<Layout />

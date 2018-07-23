@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Match from "./match/Match";
 import Standing from "./Standing";
+import {fetchProducts} from "../actions/teams";
 
 class Layout extends Component {
 	render() {
@@ -21,14 +22,13 @@ class Layout extends Component {
 					</TabList>
 					<TabPanel>
 						<div className="row">
-							<div className="tab-content col-md-9"><Standing/></div>
+							<div className="tab-content"><Standing/></div>
 							{/*{this.state.match_detail ? <div className="match-detail col-md-3"><MatchDetail user_id={this.state.user.id} updateBetId={this.updateBetId.bind(this)} groupSize={this.state.betValue} closePopup={this.closePopup.bind(this)} groupSize={this.state.betValue} bet_id={this.state.bet_id} match_detail={this.state.match_detail}/></div> : ""}*/}
 						</div>
 					</TabPanel>
 					<TabPanel>
 						<div className="row">
-							<div className="tab-content col-md-9"><Match/></div>
-							{/*{this.state.match_detail ? <div className="match-detail col-md-3"><MatchDetail user_id={this.state.user.id} updateBetId={this.updateBetId.bind(this)} groupSize={this.state.betValue} closePopup={this.closePopup.bind(this)} groupSize={this.state.betValue} bet_id={this.state.bet_id} match_detail={this.state.match_detail}/></div> : ""}*/}
+							<div className="tab-content"><Match/></div>
 						</div>
 					</TabPanel>
 					<TabPanel>

@@ -1,4 +1,4 @@
-import firebase from 'firebase';
+import fireBase from 'firebase';
 const config = {
 	apiKey: "AIzaSyBecLFfB_Dlvl1l66SQmR3fhXUnLeeUTno",
 	authDomain: "letbet-29f41.firebaseapp.com",
@@ -7,5 +7,5 @@ const config = {
 	storageBucket: "letbet-29f41.appspot.com",
 	messagingSenderId: "795341636207"
 };
-firebase.initializeApp(config);
-export default firebase;
+fireBase.initializeApp(config);
+export default fireBase;

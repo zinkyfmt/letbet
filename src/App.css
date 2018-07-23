@@ -215,6 +215,7 @@ header .user-block {
 .list-match .item {
   width: 50%;
   float: left;
+  padding: 3px;
   border: 1px solid #d8dad8;
   border-top: none;
 }
@@ -241,18 +242,22 @@ header .user-block {
   margin-left: 15px;
   font-size: 14px;
   font-weight: 600;
+  position: relative;
 }
 .list-match .item .left-side-item p span{
   margin-left: 15px;
+  position: absolute;
+  margin-top: 6px;
 }
 .list-match .item .left-side-item img {
   width: 30px;
 }
 .list-match .item .right-side-datetime {
-  margin-top: 10px;
   width: 30%;
+  margin-top: 15px;
+  font-weight: 700;
   float: right;
-  padding: 10px;
+  padding: 5px;
   text-align: center;
   font-size: 15px;
 }
@@ -431,6 +436,7 @@ ul li {
   border-bottom: none !important;
 }
 .popup-content {
+  text-align: left !important;
   width: 600px !important;
   max-width: 800px !important;
   border-radius: 5px !important;;
@@ -469,6 +475,7 @@ ul li {
 }
 .popup-add {
   margin: 5px;
+  text-align: left;
 }
 input.input-text {
   height: 30px;
@@ -484,4 +491,10 @@ input.half-width {
 }
 input.full-width {
   width: 100%;
+}
+.group-input {
+  margin-top: 10px;
+}
+.group-input label {
+  margin-right: 5px;
 }
