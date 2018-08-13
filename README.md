@@ -53,5 +53,5 @@ Set up Cronjob to run Schedule Upload with Shopify Api (leave it if existed)
 ```
 php yiic productfeed checkScheduleUpload
 ```
-## Ticket Referrence
+## Ticket Reference
 https://social-gear.atlassian.net/browse/SGSG-293
