@@ -4,7 +4,7 @@ This is the improvement feature import feed via Shopify API
 # Development demo
 http://dev1.social-gear.jp/tinh/facebookSMB/catalog/product/product_catalog_id/137212396870784
 
-# Development repository
+# Development branch 
 `branch-shopify`
 
 ## What's new
