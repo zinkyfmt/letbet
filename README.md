@@ -12,7 +12,8 @@ http://dev1.social-gear.jp/tinh/instagram/insights/insightsv1/instagram_business
 php yiic instagram pageinfo
 ```
 Description: 
-- Get `instagram_business_account` and save instagram page information page by page has `instagram_business_account`.
+- Get `instagram_business_account` and save instagram page information page by page has `instagram_business_account`
+
 Database reference
 ```
 * analytics_main.sg_instagram_account
