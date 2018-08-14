@@ -12,7 +12,7 @@ http://dev1.social-gear.jp/tinh/instagram/insights/insightsv1/instagram_business
 php yiic instagram pageinfo
 ```
 Description: 
-- Get `instagram_business_account` and save instagram page information page by page has `instagram_business_account`
+- Get `instagram_business_account` and save instagram page information page by page has `instagram_business_account`.
 Database reference
 ```
 * analytics_main.sg_instagram_account
@@ -26,8 +26,9 @@ https://developers.facebook.com/docs/instagram-api/reference/page/
 php yiic instagram insights
 ```
 Description: 
-- Get metric of reach, impressions, follower by day/week/28_days and save database
-- Collect information of audience_country, audience_age, audience_language
+- Get metric of reach, impressions, follower by day/week/28_days and save database.
+- Collect information of audience_country, audience_age, audience_language.
+
 Database reference
 ```
 * analytics_prod.sg_instagram_metrics
@@ -43,7 +44,8 @@ https://developers.facebook.com/docs/instagram-api/insights
 php yiic instagram mediaInsights
 ```
 Description: 
-- Collect data of media, insights, comments of media
+- Collect data of media, insights, comments of media.
+
 Database reference
 ```
 * analytics_prod.sg_instagram_media
@@ -60,7 +62,8 @@ https://developers.facebook.com/docs/instagram-api/reference/media
 php yiic instagram hourlyStoryInsights
 ```
 Description: 
-- Collect story insights and get metric hourly
+- Collect story insights and get metric hourly.
+
 Database reference
 ```
 * analytics_prod.sg_instagram_stories_hourly_insights
@@ -74,8 +77,9 @@ https://developers.facebook.com/docs/instagram-api/insights
 php yiic instagram storyThumbnail
 ```
 Description: 
-- Get story thumbnail and upload to S3
-- Update S3 link of thumbnail to database
+- Get story thumbnail and upload to S3.
+- Update S3 link of thumbnail to database.
+
 Database reference
 ```
 * analytics_prod.sg_instagram_media
